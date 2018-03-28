@@ -114,9 +114,21 @@
             <input class="title_shopping_cart" value="Go to shopping cart" type="hidden">
           </div>
         </div>
-        <div class="signup"><a title="Login" href="login.html"><span>Sign up Now</span></a></div>
+        @guest
+        <div class="signup"><a title="Login" href="{{ route('register') }}"><span>Sign up Now</span></a></div>
         <span class="or"> | </span>
-        <div class="login"><a title="Login" href="login.html"><span>Log In</span></a></div>
+        <div class="login"><a title="Login" href="{{ route('login') }}"><span>Log In</span></a></div>
+        @else
+        <a class="login" href="{{ route('logout') }}"
+           onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+            {{ __('Logout') }}
+        </a>
+
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+        </form>
+        @endguest
       </div>
       <!-- End Top Cart --> 
     </div>
