@@ -18,7 +18,15 @@ Route::post('/admin/login', 'Admin\LoginController@postLogin')->name('post-login
 Route::get('/admin/logout', 'Admin\LoginController@logOut')->name('admin-logout');
 
 Route::group(['middleware' => 'adminLogin'], function (){
-	Route::get('/Admin','Admin\HomeController@index')->name('admin-home');
+	Route::group(['prefix' => 'admin'], function (){
+		Route::get('/','Admin\HomeController@index')->name('admin-home');
+		Route::group(['prefix' => 'category'], function (){
+			Route::get('show', 'Admin\CategoryController@show')->name('admin.category.show');
+			Route::get('create', 'Admin\CategoryController@create')->name('admin.category.create');
+			Route::post('create', 'Admin\CategoryController@postCreate')->name('admin.category.postCreate');
+			Route::get('update/{id}', 'Admin\CategoryController@update')->name('admin.category.update');
+		});
+	});
 });
 
 Route::post('logout', ['as' => 'logout', 'uses' => 'Auth\LoginController@logout']);
