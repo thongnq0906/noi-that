@@ -53,7 +53,7 @@
                   <p class="required">* Required Fields</p>
                   <div class="buttons-set">
                     <button id="send2" name="send" type="submit" class="button login"><span>Login</span></button>
-                    <a class="forgot-word" href="{{ route('password.request') }}">Forgot Your Password?</a> </div>
+                    <a class="forgot-word" href="{{ route('password.reset') }}">Forgot Your Password?</a> </div>
                 </div>
             </form>
           </div>
