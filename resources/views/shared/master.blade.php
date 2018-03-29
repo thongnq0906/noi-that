@@ -29,7 +29,10 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
 </head>
 <body class="cms-index-index">
-<div class="page"> 
+<div class="page">
+  @if(Session::has('message'))
+    <span class="">{{ Session::get('message') }}</span>
+  @endif 
   <!-- Header -->
   @include('partials.header')
   <!-- end header --> 
